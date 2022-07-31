@@ -141,6 +141,10 @@
       <Project>{dc450f3f-0f8f-42f7-b71e-28ba36e0c06a}</Project>
       <Name>BLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Funcoes\Funcoes.csproj">
+      <Project>{87298a6c-26a8-4c3b-8791-66c5a3686a61}</Project>
+      <Name>Funcoes</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Modelo\Modelo.csproj">
       <Project>{dd92de4e-8550-4052-a16a-e9065ec04a5e}</Project>
       <Name>Modelo</Name>

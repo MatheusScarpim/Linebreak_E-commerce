@@ -27,5 +27,56 @@ namespace BLL
                 throw new Exception(msg);
             }
         }
+        public int Excluir(Modelo.Modelo_Usuario usuario)
+        {
+            try
+            {
+                return new DAL.Usuario_DAL().Excluir(usuario);
+            }
+            catch (SqlException sqlEx)
+            {
+                string msg = Funcoes.Messagens.RetornaMsgSQLException(sqlEx);
+                throw new Exception(msg);
+            }
+            catch (Exception ex)
+            {
+                string msg = Funcoes.Messagens.RetornaMsgException(ex);
+                throw new Exception(msg);
+            }
+        }
+        public int Recuperar(Modelo.Modelo_Usuario usuario)
+        {
+            try
+            {
+                return new DAL.Usuario_DAL().Recuperar(usuario);
+            }
+            catch (SqlException sqlEx)
+            {
+                string msg = Funcoes.Messagens.RetornaMsgSQLException(sqlEx);
+                throw new Exception(msg);
+            }
+            catch (Exception ex)
+            {
+                string msg = Funcoes.Messagens.RetornaMsgException(ex);
+                throw new Exception(msg);
+            }
+        }
+        public int Atualizar(Modelo.Modelo_Usuario usuario)
+        {
+            try
+            {
+                return new DAL.Usuario_DAL().Atualizar(usuario);
+            }
+            catch (SqlException sqlEx)
+            {
+                string msg = Funcoes.Messagens.RetornaMsgSQLException(sqlEx);
+                throw new Exception(msg);
+            }
+            catch (Exception ex)
+            {
+                string msg = Funcoes.Messagens.RetornaMsgException(ex);
+                throw new Exception(msg);
+            }
+        }
     }
 }
