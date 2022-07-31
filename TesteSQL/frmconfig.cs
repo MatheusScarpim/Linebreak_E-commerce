@@ -20,7 +20,6 @@ namespace TesteSQL
         {
             InitializeComponent();
         }
-        string instancia, banco, usuario, senha;
 
         private void button1_Click(object sender, EventArgs e)
         {

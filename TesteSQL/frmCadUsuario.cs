@@ -10,11 +10,10 @@ using System.Windows.Forms;
 using TesteSQL;
 using Npgsql;
 
-namespace AulaSqlServer
+namespace TesteSQL
 {
     public partial class frmCadUsuario : Form
     {
-        private int rowIndex = -1;
         public frmCadUsuario()
         {
             InitializeComponent();
@@ -29,7 +28,6 @@ namespace AulaSqlServer
 
         private void bGravar_Click(object sender, EventArgs e)
         {
-            rowIndex = -1;
             int quantidade = Convert.ToInt32(txtQtd.Text);
             double valor = Convert.ToDouble(txtValor.Text);
             try
@@ -67,7 +65,7 @@ namespace AulaSqlServer
                 dgvDataSouce.DataSource = null;
                 dgvDataSouce.DataSource = dt;
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 conn.Close();
             }
@@ -89,15 +87,10 @@ namespace AulaSqlServer
                 dgvDataSouce.DataSource = null;
                 dgvDataSouce.DataSource = dt;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 conn.Close();
             }
-        }
-
-        private void frmCadUsuario_Load(object sender, EventArgs e)
-        {
- 
         }
 
         private void btnupdate_Click(object sender, EventArgs e)
@@ -185,6 +178,12 @@ namespace AulaSqlServer
                 MessageBox.Show(ex.ToString(), "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             MostrarTodos();
+        }
+
+        private void btnAddPlanilha_Click(object sender, EventArgs e)
+        {
+            frmAddPlanilhas conf = new frmAddPlanilhas();
+            conf.Show();
         }
     }
 }
