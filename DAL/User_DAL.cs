@@ -10,23 +10,52 @@ namespace DAL
 {
     public class Usuario_DAL
     {
-
-        public int Incluir(Modelo.Modelo_Usuario usuario)
+        DateTime thisDay = DateTime.Today;
+        public int Incluir(Modelo.Modelo_User usuario)
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.Append("INSERT INTO perfume ")
-              .Append("VALUES (DEFAULT, @nomeper, @qntd, @valor, @descricao, @excluido);");
+            sb.Append("INSERT INTO usuarioslinebreak ")
+              .Append("VALUES (DEFAULT, @cpf, @nomeusu, @niver, @email, @senha, @numero,@datacriado,@excluido);");
             try
             {
                 using (NpgsqlConnection conn = new NpgsqlConnection(Funcoes.ConexaoBD.RetornaConexaoBD()))
                 {
                     NpgsqlCommand cmd = new NpgsqlCommand(sb.ToString(), conn);
-                    cmd.Parameters.AddWithValue("@nomeper", usuario.Nomeper);
-                    cmd.Parameters.AddWithValue("@qntd", usuario.Quantidade);
-                    cmd.Parameters.AddWithValue("@valor", usuario.Valor);
-                    cmd.Parameters.AddWithValue("@descricao", usuario.Descricao);
+                    cmd.Parameters.AddWithValue("@cpf", usuario.cpf);
+                    cmd.Parameters.AddWithValue("@nomeusu", usuario.nomeusu);
+                    cmd.Parameters.AddWithValue("@niver", usuario.niver);
+                    cmd.Parameters.AddWithValue("@email", usuario.email);
+                    cmd.Parameters.AddWithValue("@senha", usuario.senha);
+                    cmd.Parameters.AddWithValue("@numero", usuario.numero);
+                    cmd.Parameters.AddWithValue("@datacriado", thisDay);
                     cmd.Parameters.AddWithValue("@excluido", "n");
+                    conn.Open();
+
+                    return Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+            catch (NpgsqlException)
+            {
+                throw;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public int Excluir(Modelo.Modelo_User usuario)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append("update usuarioslinebreak set excluido = 's', dataexcluido = @dtexcluido WHERE idusuario = @idusuario");
+            try
+            {
+                using (NpgsqlConnection conn = new NpgsqlConnection(Funcoes.ConexaoBD.RetornaConexaoBD()))
+                {
+                    NpgsqlCommand cmd = new NpgsqlCommand(sb.ToString(), conn);
+                    cmd.Parameters.AddWithValue("@idusuario", usuario.idusuario);
+                    cmd.Parameters.AddWithValue("@dtexcluido", usuario.Data_Excluido.ToString("MM/dd/yyyy"));
 
                     conn.Open();
 
@@ -42,17 +71,17 @@ namespace DAL
                 throw;
             }
         }
-        public int Excluir(Modelo.Modelo_Usuario usuario)
+        public int Recuperar(Modelo.Modelo_User usuario)
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.Append("update perfume set excluido = 's' WHERE idperfume = @idperfume");
+            sb.Append("update usuarioslinebreak set excluido = 'n' WHERE idusuario = @idusuario");
             try
             {
                 using (NpgsqlConnection conn = new NpgsqlConnection(Funcoes.ConexaoBD.RetornaConexaoBD()))
                 {
                     NpgsqlCommand cmd = new NpgsqlCommand(sb.ToString(), conn);
-                    cmd.Parameters.AddWithValue("@idperfume", usuario.idPerfume);
+                    cmd.Parameters.AddWithValue("@idusuario", usuario.idusuario);
 
                     conn.Open();
 
@@ -68,49 +97,23 @@ namespace DAL
                 throw;
             }
         }
-        public int Recuperar(Modelo.Modelo_Usuario usuario)
+        public int Atualizar(Modelo.Modelo_User usuario)
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.Append("update perfume set excluido = 'n' WHERE idperfume = @idperfume");
+            sb.Append("UPDATE usuarioslinebreak SET cpf = @cpf, nomeusu = @nomeusu, niver = @niver, email = @email, senha = @senha, numero = @numero WHERE idusuario = @idusuario; ");
             try
             {
                 using (NpgsqlConnection conn = new NpgsqlConnection(Funcoes.ConexaoBD.RetornaConexaoBD()))
                 {
                     NpgsqlCommand cmd = new NpgsqlCommand(sb.ToString(), conn);
-                    cmd.Parameters.AddWithValue("@idperfume", usuario.idPerfume);
-
-                    conn.Open();
-
-                    return Convert.ToInt32(cmd.ExecuteScalar());
-                }
-            }
-            catch (NpgsqlException)
-            {
-                throw;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-        public int Atualizar(Modelo.Modelo_Usuario usuario)
-        {
-            StringBuilder sb = new StringBuilder();
-
-            sb.Append("UPDATE perfume SET nomeper = @nomeper, qntd = @qntd, valor = @valor, descricao = @descricao WHERE idperfume = @idperfume; ");
-            try
-            {
-                using (NpgsqlConnection conn = new NpgsqlConnection(Funcoes.ConexaoBD.RetornaConexaoBD()))
-                {
-                    NpgsqlCommand cmd = new NpgsqlCommand(sb.ToString(), conn);
-                    cmd.Parameters.AddWithValue("@idperfume", usuario.idPerfume);
-                    cmd.Parameters.AddWithValue("@nomeper", usuario.Nomeper);
-                    cmd.Parameters.AddWithValue("@qntd", usuario.Quantidade);
-                    cmd.Parameters.AddWithValue("@valor", usuario.Valor);
-                    cmd.Parameters.AddWithValue("@descricao", usuario.Descricao);
-                    cmd.Parameters.AddWithValue("@excluido", usuario.Excluido);
-
+                    cmd.Parameters.AddWithValue("@idusuario", usuario.idusuario);
+                    cmd.Parameters.AddWithValue("@cpf", usuario.cpf);
+                    cmd.Parameters.AddWithValue("@nomeusu", usuario.nomeusu);
+                    cmd.Parameters.AddWithValue("@niver", usuario.niver);
+                    cmd.Parameters.AddWithValue("@email", usuario.email);
+                    cmd.Parameters.AddWithValue("@senha", usuario.senha);
+                    cmd.Parameters.AddWithValue("@numero", usuario.numero);
                     conn.Open();
 
                     return Convert.ToInt32(cmd.ExecuteScalar());

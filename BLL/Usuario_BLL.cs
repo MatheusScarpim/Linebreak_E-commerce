@@ -10,11 +10,11 @@ namespace BLL
 {
     public class Usuario_BLL
     {
-        public int Incluir(Modelo.Modelo_Usuario usuario)
+        public int Incluir(Modelo.Modelo_Produto usuario)
         {
             try
             {
-                return new DAL.Usuario_DAL().Incluir(usuario);
+                return new DAL.Produtos_DAL().Incluir(usuario);
             }
             catch (SqlException sqlEx)
             {
@@ -27,11 +27,11 @@ namespace BLL
                 throw new Exception(msg);
             }
         }
-        public int Excluir(Modelo.Modelo_Usuario usuario)
+        public int Excluir(Modelo.Modelo_Produto usuario)
         {
             try
             {
-                return new DAL.Usuario_DAL().Excluir(usuario);
+                return new DAL.Produtos_DAL().Excluir(usuario);
             }
             catch (SqlException sqlEx)
             {
@@ -44,11 +44,11 @@ namespace BLL
                 throw new Exception(msg);
             }
         }
-        public int Recuperar(Modelo.Modelo_Usuario usuario)
+        public int Recuperar(Modelo.Modelo_Produto usuario)
         {
             try
             {
-                return new DAL.Usuario_DAL().Recuperar(usuario);
+                return new DAL.Produtos_DAL().Recuperar(usuario);
             }
             catch (SqlException sqlEx)
             {
@@ -61,11 +61,11 @@ namespace BLL
                 throw new Exception(msg);
             }
         }
-        public int Atualizar(Modelo.Modelo_Usuario usuario)
+        public int Atualizar(Modelo.Modelo_Produto usuario)
         {
             try
             {
-                return new DAL.Usuario_DAL().Atualizar(usuario);
+                return new DAL.Produtos_DAL().Atualizar(usuario);
             }
             catch (SqlException sqlEx)
             {

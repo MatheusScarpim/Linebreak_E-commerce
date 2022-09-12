@@ -42,7 +42,7 @@ namespace TesteSQL
             try
             {
                 conn.Open();
-                sql = @"select * from perfume order by idperfume;";
+                sql = @"select * from produtolinebreak order by idproduto;";
                 cmd = new NpgsqlCommand(sql, conn);
                 dt = new System.Data.DataTable();
                 dt.Load(cmd.ExecuteReader());
@@ -89,7 +89,7 @@ namespace TesteSQL
         }
         private void ImportarPlanilha()
         {
-            Modelo.Modelo_Usuario usuario = new Modelo.Modelo_Usuario();
+            Modelo.Modelo_Produto usuario = new Modelo.Modelo_Produto();
             pasta = app.Workbooks.Open(lblNomePlanilha.Text);
             plan = pasta.Worksheets["Cadastrar"];
             bool valor = true;
@@ -127,6 +127,11 @@ namespace TesteSQL
 
 
         private void btnAttDados_Click(object sender, EventArgs e)
+        {
+            MostrarTodos();
+        }
+
+        private void frmAddPlanilhas_Load(object sender, EventArgs e)
         {
             MostrarTodos();
         }

@@ -1,6 +1,6 @@
 ﻿namespace TesteSQL
 {
-    partial class frmCadUsuario
+    partial class frmCadProduto
     {
         /// <summary>
         /// Required designer variable.
@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCadProduto));
             this.label1 = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
-            this.txtQtd = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.txtValor = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtQtd = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.bGravar = new System.Windows.Forms.Button();
             this.txtDescricao = new System.Windows.Forms.TextBox();
             this.Descricao = new System.Windows.Forms.Label();
@@ -49,7 +50,13 @@
             this.btnRecuperar = new System.Windows.Forms.Button();
             this.btnAttdados = new System.Windows.Forms.Button();
             this.btnAddPlanilha = new System.Windows.Forms.Button();
+            this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
+            this.ConfigurarBanco = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.BancoUser = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataSouce)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
+            this.bindingNavigator1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -68,12 +75,12 @@
             this.txtNome.Size = new System.Drawing.Size(151, 20);
             this.txtNome.TabIndex = 1;
             // 
-            // txtQtd
+            // txtValor
             // 
-            this.txtQtd.Location = new System.Drawing.Point(188, 63);
-            this.txtQtd.Name = "txtQtd";
-            this.txtQtd.Size = new System.Drawing.Size(151, 20);
-            this.txtQtd.TabIndex = 3;
+            this.txtValor.Location = new System.Drawing.Point(188, 63);
+            this.txtValor.Name = "txtValor";
+            this.txtValor.Size = new System.Drawing.Size(151, 20);
+            this.txtValor.TabIndex = 3;
             // 
             // label2
             // 
@@ -84,12 +91,12 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Quantidade";
             // 
-            // txtValor
+            // txtQtd
             // 
-            this.txtValor.Location = new System.Drawing.Point(345, 63);
-            this.txtValor.Name = "txtValor";
-            this.txtValor.Size = new System.Drawing.Size(151, 20);
-            this.txtValor.TabIndex = 5;
+            this.txtQtd.Location = new System.Drawing.Point(345, 63);
+            this.txtQtd.Name = "txtQtd";
+            this.txtQtd.Size = new System.Drawing.Size(151, 20);
+            this.txtQtd.TabIndex = 5;
             // 
             // label3
             // 
@@ -99,16 +106,6 @@
             this.label3.Size = new System.Drawing.Size(31, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "Valor";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(727, -1);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(151, 33);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Configura Bd";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // bGravar
             // 
@@ -149,7 +146,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(466, 406);
+            this.label4.Location = new System.Drawing.Point(469, 406);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(72, 13);
             this.label4.TabIndex = 13;
@@ -166,7 +163,7 @@
             // 
             // btnupdate
             // 
-            this.btnupdate.Location = new System.Drawing.Point(31, 406);
+            this.btnupdate.Location = new System.Drawing.Point(31, 421);
             this.btnupdate.Name = "btnupdate";
             this.btnupdate.Size = new System.Drawing.Size(148, 31);
             this.btnupdate.TabIndex = 17;
@@ -199,7 +196,7 @@
             // 
             // btnExcluidos
             // 
-            this.btnExcluidos.Location = new System.Drawing.Point(31, 446);
+            this.btnExcluidos.Location = new System.Drawing.Point(31, 461);
             this.btnExcluidos.Name = "btnExcluidos";
             this.btnExcluidos.Size = new System.Drawing.Size(148, 31);
             this.btnExcluidos.TabIndex = 21;
@@ -219,7 +216,7 @@
             // 
             // btnAttdados
             // 
-            this.btnAttdados.Location = new System.Drawing.Point(603, 443);
+            this.btnAttdados.Location = new System.Drawing.Point(603, 446);
             this.btnAttdados.Name = "btnAttdados";
             this.btnAttdados.Size = new System.Drawing.Size(243, 49);
             this.btnAttdados.TabIndex = 23;
@@ -229,7 +226,7 @@
             // 
             // btnAddPlanilha
             // 
-            this.btnAddPlanilha.Location = new System.Drawing.Point(217, 443);
+            this.btnAddPlanilha.Location = new System.Drawing.Point(221, 461);
             this.btnAddPlanilha.Name = "btnAddPlanilha";
             this.btnAddPlanilha.Size = new System.Drawing.Size(143, 34);
             this.btnAddPlanilha.TabIndex = 24;
@@ -237,11 +234,59 @@
             this.btnAddPlanilha.UseVisualStyleBackColor = true;
             this.btnAddPlanilha.Click += new System.EventHandler(this.btnAddPlanilha_Click);
             // 
+            // bindingNavigator1
+            // 
+            this.bindingNavigator1.AddNewItem = null;
+            this.bindingNavigator1.CountItem = null;
+            this.bindingNavigator1.DeleteItem = null;
+            this.bindingNavigator1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ConfigurarBanco,
+            this.toolStripButton2,
+            this.BancoUser});
+            this.bindingNavigator1.Location = new System.Drawing.Point(0, 0);
+            this.bindingNavigator1.MoveFirstItem = null;
+            this.bindingNavigator1.MoveLastItem = null;
+            this.bindingNavigator1.MoveNextItem = null;
+            this.bindingNavigator1.MovePreviousItem = null;
+            this.bindingNavigator1.Name = "bindingNavigator1";
+            this.bindingNavigator1.PositionItem = null;
+            this.bindingNavigator1.Size = new System.Drawing.Size(879, 25);
+            this.bindingNavigator1.TabIndex = 25;
+            this.bindingNavigator1.Text = "bindingNavigator1";
+            // 
+            // ConfigurarBanco
+            // 
+            this.ConfigurarBanco.Image = ((System.Drawing.Image)(resources.GetObject("ConfigurarBanco.Image")));
+            this.ConfigurarBanco.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ConfigurarBanco.Name = "ConfigurarBanco";
+            this.ConfigurarBanco.Size = new System.Drawing.Size(120, 22);
+            this.ConfigurarBanco.Text = "Configurar Banco";
+            this.ConfigurarBanco.Click += new System.EventHandler(this.ConfigurarBanco_Click);
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(137, 22);
+            this.toolStripButton2.Text = "Controle de Usúarios";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            // 
+            // BancoUser
+            // 
+            this.BancoUser.Image = ((System.Drawing.Image)(resources.GetObject("BancoUser.Image")));
+            this.BancoUser.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BancoUser.Name = "BancoUser";
+            this.BancoUser.Size = new System.Drawing.Size(72, 22);
+            this.BancoUser.Text = "Usúarios";
+            this.BancoUser.Click += new System.EventHandler(this.BancoUser_Click);
+            // 
             // frmCadUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(879, 507);
+            this.Controls.Add(this.bindingNavigator1);
             this.Controls.Add(this.btnAddPlanilha);
             this.Controls.Add(this.btnAttdados);
             this.Controls.Add(this.btnRecuperar);
@@ -256,16 +301,18 @@
             this.Controls.Add(this.Descricao);
             this.Controls.Add(this.txtDescricao);
             this.Controls.Add(this.bGravar);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.txtValor);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.txtQtd);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtValor);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.label1);
             this.Name = "frmCadUsuario";
             this.Text = "frmCadUsuario";
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataSouce)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
+            this.bindingNavigator1.ResumeLayout(false);
+            this.bindingNavigator1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -275,11 +322,10 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtNome;
-        private System.Windows.Forms.TextBox txtQtd;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtValor;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtQtd;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button bGravar;
         private System.Windows.Forms.TextBox txtDescricao;
         private System.Windows.Forms.Label Descricao;
@@ -294,5 +340,9 @@
         private System.Windows.Forms.Button btnRecuperar;
         private System.Windows.Forms.Button btnAttdados;
         private System.Windows.Forms.Button btnAddPlanilha;
+        private System.Windows.Forms.BindingNavigator bindingNavigator1;
+        private System.Windows.Forms.ToolStripButton ConfigurarBanco;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton BancoUser;
     }
 }

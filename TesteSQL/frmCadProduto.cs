@@ -12,18 +12,12 @@ using Npgsql;
 
 namespace TesteSQL
 {
-    public partial class frmCadUsuario : Form
+    public partial class frmCadProduto : Form
     {
-        public frmCadUsuario()
+        DateTime thisDay = DateTime.Today;
+        public frmCadProduto()
         {
             InitializeComponent();
-        }
-
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            frmconfig conf = new frmconfig();
-            conf.Show();
         }
 
         private void bGravar_Click(object sender, EventArgs e)
@@ -32,7 +26,7 @@ namespace TesteSQL
             double valor = Convert.ToDouble(txtValor.Text);
             try
             {
-                Modelo.Modelo_Usuario usuario = new Modelo.Modelo_Usuario();
+                Modelo.Modelo_Produto usuario = new Modelo.Modelo_Produto();
                 usuario.Nomeper = (txtNome.Text);
                 usuario.Quantidade = (quantidade);
                 usuario.Valor = (valor);
@@ -57,7 +51,7 @@ namespace TesteSQL
             try
             {
                 conn.Open();
-                sql = @"select * from perfume where excluido = 'n' order by idperfume;";
+                sql = @"select * from produtolinebreak where excluido = 'n' order by idproduto;";
                 cmd = new NpgsqlCommand(sql, conn);
                 dt = new DataTable();
                 dt.Load(cmd.ExecuteReader());
@@ -79,7 +73,7 @@ namespace TesteSQL
             try
             {
                 conn.Open();
-                sql = @"select * from perfume where excluido = 's' order by idperfume;";
+                sql = @"select * from produtolinebreak where excluido = 's' order by idproduto;";
                 cmd = new NpgsqlCommand(sql, conn);
                 dt = new DataTable();
                 dt.Load(cmd.ExecuteReader());
@@ -102,10 +96,10 @@ namespace TesteSQL
         {
             if (e.RowIndex >= 0)
             {
-                txtIdPerfume.Text = dgvDataSouce.Rows[e.RowIndex].Cells["idperfume"].Value.ToString();
+                txtIdPerfume.Text = dgvDataSouce.Rows[e.RowIndex].Cells["idproduto"].Value.ToString();
                 txtNome.Text = dgvDataSouce.Rows[e.RowIndex].Cells["nomeper"].Value.ToString();
-                txtQtd.Text = dgvDataSouce.Rows[e.RowIndex].Cells["qntd"].Value.ToString();
-                txtValor.Text = dgvDataSouce.Rows[e.RowIndex].Cells["valor"].Value.ToString();
+                txtValor.Text = dgvDataSouce.Rows[e.RowIndex].Cells["qntd"].Value.ToString();
+                txtQtd.Text = dgvDataSouce.Rows[e.RowIndex].Cells["preco"].Value.ToString();
                 txtDescricao.Text = dgvDataSouce.Rows[e.RowIndex].Cells["descricao"].Value.ToString();
                 txtExcluido.Text = dgvDataSouce.Rows[e.RowIndex].Cells["excluido"].Value.ToString();
             }
@@ -116,8 +110,9 @@ namespace TesteSQL
             int idperfume = Convert.ToInt32(txtIdPerfume.Text);
             try
             {
-                Modelo.Modelo_Usuario usuario = new Modelo.Modelo_Usuario();
+                Modelo.Modelo_Produto usuario = new Modelo.Modelo_Produto();
                 usuario.idPerfume = (idperfume);
+                usuario.Data_Excluido = thisDay;
 
                 string codigo = new BLL.Usuario_BLL().Excluir(usuario).ToString();
 
@@ -140,7 +135,7 @@ namespace TesteSQL
             int idperfume = Convert.ToInt32(txtIdPerfume.Text);
             try
             {
-                Modelo.Modelo_Usuario usuario = new Modelo.Modelo_Usuario();
+                Modelo.Modelo_Produto usuario = new Modelo.Modelo_Produto();
                 usuario.idPerfume = (idperfume);
 
                 string codigo = new BLL.Usuario_BLL().Recuperar(usuario).ToString();
@@ -156,12 +151,12 @@ namespace TesteSQL
 
         private void btnAttdados_Click(object sender, EventArgs e)
         {
-            int quantidade = Convert.ToInt32(txtQtd.Text);
-            double valor = Convert.ToDouble(txtValor.Text);
+            int quantidade = Convert.ToInt32(txtValor.Text);
+            double valor = Convert.ToDouble(txtQtd.Text);
             int idperfume = Convert.ToInt32(txtIdPerfume.Text);
             try
             {
-                Modelo.Modelo_Usuario usuario = new Modelo.Modelo_Usuario();
+                Modelo.Modelo_Produto usuario = new Modelo.Modelo_Produto();
                 usuario.idPerfume = (idperfume);
                 usuario.Nomeper = (txtNome.Text);
                 usuario.Quantidade = (quantidade);
@@ -183,6 +178,24 @@ namespace TesteSQL
         private void btnAddPlanilha_Click(object sender, EventArgs e)
         {
             frmAddPlanilhas conf = new frmAddPlanilhas();
+            conf.Show();
+        }
+
+        private void ConfigurarBanco_Click(object sender, EventArgs e)
+        {
+            frmconfig conf = new frmconfig();
+            conf.Show();
+        }
+
+        private void BancoUser_Click(object sender, EventArgs e)
+        {
+            Login conf = new Login();
+            conf.Show();
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            frmCadUser conf = new frmCadUser();
             conf.Show();
         }
     }

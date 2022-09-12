@@ -16,7 +16,7 @@ namespace TesteSQL
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmCadUsuario());
+            Application.Run(new frmCadProduto());
         }
     }
 }

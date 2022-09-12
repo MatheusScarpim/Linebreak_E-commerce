@@ -63,7 +63,7 @@
             // 
             // btnCarregarPlanilha
             // 
-            this.btnCarregarPlanilha.Location = new System.Drawing.Point(15, 135);
+            this.btnCarregarPlanilha.Location = new System.Drawing.Point(15, 102);
             this.btnCarregarPlanilha.Name = "btnCarregarPlanilha";
             this.btnCarregarPlanilha.Size = new System.Drawing.Size(172, 59);
             this.btnCarregarPlanilha.TabIndex = 2;
@@ -73,7 +73,7 @@
             // 
             // btnBaixarPlanilha
             // 
-            this.btnBaixarPlanilha.Location = new System.Drawing.Point(15, 210);
+            this.btnBaixarPlanilha.Location = new System.Drawing.Point(15, 177);
             this.btnBaixarPlanilha.Name = "btnBaixarPlanilha";
             this.btnBaixarPlanilha.Size = new System.Drawing.Size(172, 59);
             this.btnBaixarPlanilha.TabIndex = 3;
@@ -86,12 +86,12 @@
             this.dgvDataSouce.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDataSouce.Location = new System.Drawing.Point(228, 12);
             this.dgvDataSouce.Name = "dgvDataSouce";
-            this.dgvDataSouce.Size = new System.Drawing.Size(551, 257);
+            this.dgvDataSouce.Size = new System.Drawing.Size(553, 316);
             this.dgvDataSouce.TabIndex = 4;
             // 
             // btnAttDados
             // 
-            this.btnAttDados.Location = new System.Drawing.Point(15, 275);
+            this.btnAttDados.Location = new System.Drawing.Point(15, 254);
             this.btnAttDados.Name = "btnAttDados";
             this.btnAttDados.Size = new System.Drawing.Size(172, 59);
             this.btnAttDados.TabIndex = 5;
@@ -103,7 +103,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 340);
+            this.ClientSize = new System.Drawing.Size(793, 340);
             this.Controls.Add(this.btnAttDados);
             this.Controls.Add(this.dgvDataSouce);
             this.Controls.Add(this.btnBaixarPlanilha);
@@ -112,6 +112,7 @@
             this.Controls.Add(this.btnAddplanilha);
             this.Name = "frmAddPlanilhas";
             this.Text = "frmAddPlanilhas";
+            this.Load += new System.EventHandler(this.frmAddPlanilhas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataSouce)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
