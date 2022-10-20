@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TesteSQL;
 using Npgsql;
+using System.Drawing.Imaging;
+using System.IO;
 
 namespace TesteSQL
 {
@@ -27,6 +29,13 @@ namespace TesteSQL
             try
             {
                 Modelo.Modelo_Produto usuario = new Modelo.Modelo_Produto();
+                MemoryStream m = new MemoryStream();
+                Image image = pcImagem.Image;
+                string base64String = null;
+                image.Save(m, image.RawFormat);
+                byte[] imageBytes = m.ToArray();
+                base64String = Convert.ToBase64String(imageBytes);
+                usuario.imagem = (base64String);
                 usuario.Nomeper = (txtNome.Text);
                 usuario.Quantidade = (quantidade);
                 usuario.Valor = (valor);
@@ -101,6 +110,15 @@ namespace TesteSQL
                 txtValor.Text = dgvDataSouce.Rows[e.RowIndex].Cells["qntd"].Value.ToString();
                 txtQtd.Text = dgvDataSouce.Rows[e.RowIndex].Cells["preco"].Value.ToString();
                 txtDescricao.Text = dgvDataSouce.Rows[e.RowIndex].Cells["descricao"].Value.ToString();
+                try
+                {
+                    string base64 = dgvDataSouce.Rows[e.RowIndex].Cells["campoimagem"].Value.ToString();
+                    pcImagem.Image = Image.FromStream(new MemoryStream(Convert.FromBase64String(base64))); ;
+                }
+                catch
+                {
+
+                }
                 txtExcluido.Text = dgvDataSouce.Rows[e.RowIndex].Cells["excluido"].Value.ToString();
             }
         }
@@ -156,7 +174,14 @@ namespace TesteSQL
             int idperfume = Convert.ToInt32(txtIdPerfume.Text);
             try
             {
+                MemoryStream m = new MemoryStream();
+                Image image = pcImagem.Image;
+                string base64String = null;
+                image.Save(m, image.RawFormat);
+                byte[] imageBytes = m.ToArray();
+                base64String = Convert.ToBase64String(imageBytes);
                 Modelo.Modelo_Produto usuario = new Modelo.Modelo_Produto();
+                usuario.imagem = (base64String);
                 usuario.idPerfume = (idperfume);
                 usuario.Nomeper = (txtNome.Text);
                 usuario.Quantidade = (quantidade);
@@ -197,6 +222,17 @@ namespace TesteSQL
         {
             frmCadUser conf = new frmCadUser();
             conf.Show();
+        }
+
+        private void abrirImagem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.ShowDialog();
+            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                MessageBox.Show("Imagem " + openFileDialog1.FileName + " foi importada");
+                pcImagem.ImageLocation = openFileDialog1.FileName;
+            }
         }
     }
 }

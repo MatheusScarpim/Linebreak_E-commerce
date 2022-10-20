@@ -247,11 +247,11 @@
     <Compile Include="frmAddPlanilhas.Designer.cs">
       <DependentUpon>frmAddPlanilhas.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmBancoUsers.cs">
+    <Compile Include="frmVerCompras.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmBancoUsers.Designer.cs">
-      <DependentUpon>frmBancoUsers.cs</DependentUpon>
+    <Compile Include="frmVerCompras.Designer.cs">
+      <DependentUpon>frmVerCompras.cs</DependentUpon>
     </Compile>
     <Compile Include="frmCadUser.cs">
       <SubType>Form</SubType>
@@ -271,6 +271,12 @@
     <Compile Include="frmconfig.Designer.cs">
       <DependentUpon>frmconfig.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMenu.Designer.cs">
+      <DependentUpon>frmMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -282,8 +288,8 @@
     <EmbeddedResource Include="frmAddPlanilhas.resx">
       <DependentUpon>frmAddPlanilhas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmBancoUsers.resx">
-      <DependentUpon>frmBancoUsers.cs</DependentUpon>
+    <EmbeddedResource Include="frmVerCompras.resx">
+      <DependentUpon>frmVerCompras.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCadProduto.resx">
       <DependentUpon>frmCadProduto.cs</DependentUpon>
@@ -293,6 +299,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmconfig.resx">
       <DependentUpon>frmconfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMenu.resx">
+      <DependentUpon>frmMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

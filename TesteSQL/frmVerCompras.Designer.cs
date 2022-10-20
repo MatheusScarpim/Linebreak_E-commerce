@@ -1,6 +1,6 @@
 ﻿namespace TesteSQL
 {
-    partial class frmBancoUsers
+    partial class frmVerCompras
     {
         /// <summary>
         /// Required designer variable.

@@ -16,7 +16,7 @@ namespace DAL
             StringBuilder sb = new StringBuilder();
 
             sb.Append("INSERT INTO produtolinebreak ")
-              .Append("VALUES (DEFAULT, @nomeper, @preco, @qntd, @descricao, @excluido);");
+              .Append("VALUES (DEFAULT, @nomeper, @preco, @qntd, @descricao, @excluido, @imagem);");
             try
             {
                 using (NpgsqlConnection conn = new NpgsqlConnection(Funcoes.ConexaoBD.RetornaConexaoBD()))
@@ -27,6 +27,7 @@ namespace DAL
                     cmd.Parameters.AddWithValue("@qntd", usuario.Valor);
                     cmd.Parameters.AddWithValue("@descricao", usuario.Descricao);
                     cmd.Parameters.AddWithValue("@excluido", "n");
+                    cmd.Parameters.AddWithValue("@imagem", usuario.imagem.ToString());
 
                     conn.Open();
 
@@ -99,7 +100,7 @@ namespace DAL
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.Append("UPDATE produtolinebreak SET nomeper = @nomeper, qntd = @qntd, preco = @preco, descricao = @descricao WHERE idproduto = @idperfume; ");
+            sb.Append("UPDATE produtolinebreak SET nomeper = @nomeper, qntd = @qntd, preco = @preco, descricao = @descricao, campoimagem = @imagem WHERE idproduto = @idperfume; ");
             try
             {
                 using (NpgsqlConnection conn = new NpgsqlConnection(Funcoes.ConexaoBD.RetornaConexaoBD()))
@@ -110,6 +111,7 @@ namespace DAL
                     cmd.Parameters.AddWithValue("@qntd", usuario.Quantidade);
                     cmd.Parameters.AddWithValue("@preco", usuario.Valor);
                     cmd.Parameters.AddWithValue("@descricao", usuario.Descricao);
+                    cmd.Parameters.AddWithValue("@imagem", usuario.imagem);
                     cmd.Parameters.AddWithValue("@excluido", usuario.Excluido);
 
                     conn.Open();

@@ -12,9 +12,7 @@ namespace DAL
 {
     public class Login_DAL
     {
-        public static string loginPes;
-        public static string senhaPes;
-        public bool verificarLogin(String login, String senha)
+        public bool verificarLogin(string login, string senha)
         {
             StringBuilder sb = new StringBuilder();
             NpgsqlDataReader dr;
@@ -24,8 +22,6 @@ namespace DAL
             {
                 try
                 {
-                    loginPes = login;
-                    senhaPes = senha;
                     NpgsqlCommand cmd = new NpgsqlCommand(sb.ToString(), conn);
                     cmd.Parameters.AddWithValue("@logar", login);
                     cmd.Parameters.AddWithValue("@senha", senha);
@@ -45,7 +41,7 @@ namespace DAL
             return tem;
         }
 
-        public bool verificarAdm()
+        public bool verificarAdm(string login, string senha)
         {
             StringBuilder sb = new StringBuilder();
             NpgsqlDataReader dr;
@@ -56,8 +52,8 @@ namespace DAL
                 try
                 {
                     NpgsqlCommand cmd = new NpgsqlCommand(sb.ToString(), conn);
-                    cmd.Parameters.AddWithValue("@logar", loginPes);
-                    cmd.Parameters.AddWithValue("@senha", senhaPes);
+                    cmd.Parameters.AddWithValue("@logar", login);
+                    cmd.Parameters.AddWithValue("@senha", senha);
                     conn.Open();
                     dr = cmd.ExecuteReader();
                     if (dr.HasRows)

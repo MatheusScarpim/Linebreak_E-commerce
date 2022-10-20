@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
@@ -17,8 +18,25 @@ namespace TesteSQL
         {
             InitializeComponent();
         }
-        public static string email;
-        
+        public static string Email;
+        public static string Senha;
+        frmMenu frmMenu = new frmMenu();
+
+        public void Open_Form()
+        {
+
+            if (Application.OpenForms.OfType<frmMenu>().Count() > 0)
+            {
+                MessageBox.Show("Formulário já está aberto");
+            }
+            else
+            {
+                frmMenu.Show();
+                Application.Run(frmMenu);
+            }
+
+        }
+
         private void btnLogar_Click(object sender, EventArgs e)
         {
 
@@ -27,8 +45,20 @@ namespace TesteSQL
             {
                 if(tem == true)
                 {
-                    frmBancoUsers bancoUsers = new frmBancoUsers();
-                    bancoUsers.Show();
+                    bool adm = new DAL.Login_DAL().verificarAdm(txtUser.Text, txtSenha.Text);
+                    if(adm == true)
+                    {
+                        frmMenu.adm = true;
+                    }
+                    else
+                    {
+                        frmMenu.adm = false;
+                    }
+                    Email = txtUser.Text;
+                    Senha = txtSenha.Text;
+                    Thread t = new Thread(Open_Form);
+                    t.Start();
+                    Thread.Sleep(500);
                     this.Close();
                 }
                 else

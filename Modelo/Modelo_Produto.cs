@@ -8,6 +8,8 @@ namespace Modelo
 {
     public class Modelo_Produto
     {
+
+        public string imagem { get; set; }
         public int idPerfume { get; set; }
         public string Nomeper { get; set; }
         public int Quantidade { get; set; }

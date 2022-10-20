@@ -117,12 +117,26 @@ namespace TesteSQL
 
         private void btnCarregarPlanilha_Click(object sender, EventArgs e)
         {
-            ImportarPlanilha();
+            try
+            {
+                ImportarPlanilha();
+            }
+            catch
+            {
+                MessageBox.Show("Erro");
+            }
         }
 
         private void btnBaixarPlanilha_Click(object sender, EventArgs e)
         {
-            ExportarPlanilha();
+            try
+            {
+                ExportarPlanilha();
+            }
+            catch
+            {
+                MessageBox.Show("Erro");
+            }
         }
 
 

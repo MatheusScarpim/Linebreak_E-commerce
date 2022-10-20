@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCadProduto));
             this.label1 = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.txtValor = new System.Windows.Forms.TextBox();
@@ -50,19 +48,17 @@
             this.btnRecuperar = new System.Windows.Forms.Button();
             this.btnAttdados = new System.Windows.Forms.Button();
             this.btnAddPlanilha = new System.Windows.Forms.Button();
-            this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
-            this.ConfigurarBanco = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.BancoUser = new System.Windows.Forms.ToolStripButton();
+            this.pcImagem = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataSouce)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
-            this.bindingNavigator1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcImagem)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(28, 47);
+            this.label1.Location = new System.Drawing.Point(28, 60);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 0;
@@ -70,14 +66,14 @@
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(31, 63);
+            this.txtNome.Location = new System.Drawing.Point(31, 76);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(151, 20);
             this.txtNome.TabIndex = 1;
             // 
             // txtValor
             // 
-            this.txtValor.Location = new System.Drawing.Point(188, 63);
+            this.txtValor.Location = new System.Drawing.Point(188, 76);
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(151, 20);
             this.txtValor.TabIndex = 3;
@@ -85,7 +81,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(185, 47);
+            this.label2.Location = new System.Drawing.Point(185, 60);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 13);
             this.label2.TabIndex = 2;
@@ -93,7 +89,7 @@
             // 
             // txtQtd
             // 
-            this.txtQtd.Location = new System.Drawing.Point(345, 63);
+            this.txtQtd.Location = new System.Drawing.Point(348, 76);
             this.txtQtd.Name = "txtQtd";
             this.txtQtd.Size = new System.Drawing.Size(151, 20);
             this.txtQtd.TabIndex = 5;
@@ -101,7 +97,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(345, 47);
+            this.label3.Location = new System.Drawing.Point(345, 60);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(31, 13);
             this.label3.TabIndex = 4;
@@ -119,7 +115,7 @@
             // 
             // txtDescricao
             // 
-            this.txtDescricao.Location = new System.Drawing.Point(501, 63);
+            this.txtDescricao.Location = new System.Drawing.Point(505, 76);
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.Size = new System.Drawing.Size(151, 20);
             this.txtDescricao.TabIndex = 9;
@@ -127,7 +123,7 @@
             // Descricao
             // 
             this.Descricao.AutoSize = true;
-            this.Descricao.Location = new System.Drawing.Point(498, 47);
+            this.Descricao.Location = new System.Drawing.Point(502, 60);
             this.Descricao.Name = "Descricao";
             this.Descricao.Size = new System.Drawing.Size(55, 13);
             this.Descricao.TabIndex = 10;
@@ -155,9 +151,9 @@
             // dgvDataSouce
             // 
             this.dgvDataSouce.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDataSouce.Location = new System.Drawing.Point(31, 101);
+            this.dgvDataSouce.Location = new System.Drawing.Point(31, 102);
             this.dgvDataSouce.Name = "dgvDataSouce";
-            this.dgvDataSouce.Size = new System.Drawing.Size(815, 280);
+            this.dgvDataSouce.Size = new System.Drawing.Size(778, 280);
             this.dgvDataSouce.TabIndex = 16;
             this.dgvDataSouce.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDataSouce_CellClick);
             // 
@@ -173,7 +169,7 @@
             // 
             // txtExcluido
             // 
-            this.txtExcluido.Location = new System.Drawing.Point(658, 63);
+            this.txtExcluido.Location = new System.Drawing.Point(658, 76);
             this.txtExcluido.Name = "txtExcluido";
             this.txtExcluido.Size = new System.Drawing.Size(151, 20);
             this.txtExcluido.TabIndex = 18;
@@ -181,7 +177,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(655, 47);
+            this.label6.Location = new System.Drawing.Point(655, 60);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(47, 13);
             this.label6.TabIndex = 19;
@@ -234,59 +230,37 @@
             this.btnAddPlanilha.UseVisualStyleBackColor = true;
             this.btnAddPlanilha.Click += new System.EventHandler(this.btnAddPlanilha_Click);
             // 
-            // bindingNavigator1
+            // pcImagem
             // 
-            this.bindingNavigator1.AddNewItem = null;
-            this.bindingNavigator1.CountItem = null;
-            this.bindingNavigator1.DeleteItem = null;
-            this.bindingNavigator1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ConfigurarBanco,
-            this.toolStripButton2,
-            this.BancoUser});
-            this.bindingNavigator1.Location = new System.Drawing.Point(0, 0);
-            this.bindingNavigator1.MoveFirstItem = null;
-            this.bindingNavigator1.MoveLastItem = null;
-            this.bindingNavigator1.MoveNextItem = null;
-            this.bindingNavigator1.MovePreviousItem = null;
-            this.bindingNavigator1.Name = "bindingNavigator1";
-            this.bindingNavigator1.PositionItem = null;
-            this.bindingNavigator1.Size = new System.Drawing.Size(879, 25);
-            this.bindingNavigator1.TabIndex = 25;
-            this.bindingNavigator1.Text = "bindingNavigator1";
+            this.pcImagem.Location = new System.Drawing.Point(824, 21);
+            this.pcImagem.Name = "pcImagem";
+            this.pcImagem.Size = new System.Drawing.Size(111, 100);
+            this.pcImagem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pcImagem.TabIndex = 25;
+            this.pcImagem.TabStop = false;
+            this.pcImagem.Click += new System.EventHandler(this.abrirImagem_Click);
             // 
-            // ConfigurarBanco
+            // button1
             // 
-            this.ConfigurarBanco.Image = ((System.Drawing.Image)(resources.GetObject("ConfigurarBanco.Image")));
-            this.ConfigurarBanco.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ConfigurarBanco.Name = "ConfigurarBanco";
-            this.ConfigurarBanco.Size = new System.Drawing.Size(120, 22);
-            this.ConfigurarBanco.Text = "Configurar Banco";
-            this.ConfigurarBanco.Click += new System.EventHandler(this.ConfigurarBanco_Click);
+            this.button1.Location = new System.Drawing.Point(829, 127);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(103, 23);
+            this.button1.TabIndex = 26;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.abrirImagem_Click);
             // 
-            // toolStripButton2
+            // openFileDialog1
             // 
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(137, 22);
-            this.toolStripButton2.Text = "Controle de Usúarios";
-            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // BancoUser
-            // 
-            this.BancoUser.Image = ((System.Drawing.Image)(resources.GetObject("BancoUser.Image")));
-            this.BancoUser.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.BancoUser.Name = "BancoUser";
-            this.BancoUser.Size = new System.Drawing.Size(72, 22);
-            this.BancoUser.Text = "Usúarios";
-            this.BancoUser.Click += new System.EventHandler(this.BancoUser_Click);
-            // 
-            // frmCadUsuario
+            // frmCadProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(879, 507);
-            this.Controls.Add(this.bindingNavigator1);
+            this.ClientSize = new System.Drawing.Size(958, 507);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.pcImagem);
             this.Controls.Add(this.btnAddPlanilha);
             this.Controls.Add(this.btnAttdados);
             this.Controls.Add(this.btnRecuperar);
@@ -307,12 +281,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.label1);
-            this.Name = "frmCadUsuario";
+            this.Name = "frmCadProduto";
             this.Text = "frmCadUsuario";
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataSouce)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
-            this.bindingNavigator1.ResumeLayout(false);
-            this.bindingNavigator1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcImagem)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -340,9 +312,8 @@
         private System.Windows.Forms.Button btnRecuperar;
         private System.Windows.Forms.Button btnAttdados;
         private System.Windows.Forms.Button btnAddPlanilha;
-        private System.Windows.Forms.BindingNavigator bindingNavigator1;
-        private System.Windows.Forms.ToolStripButton ConfigurarBanco;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
-        private System.Windows.Forms.ToolStripButton BancoUser;
+        private System.Windows.Forms.PictureBox pcImagem;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

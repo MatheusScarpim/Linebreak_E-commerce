@@ -11,12 +11,12 @@ namespace DAL
     public class Usuario_DAL
     {
         DateTime thisDay = DateTime.Today;
-        public int Incluir(Modelo.Modelo_User usuario)
+        public string Incluir(Modelo.Modelo_User usuario)
         {
             StringBuilder sb = new StringBuilder();
 
             sb.Append("INSERT INTO usuarioslinebreak ")
-              .Append("VALUES (DEFAULT, @cpf, @nomeusu, @niver, @email, @senha, @numero,@datacriado,@excluido);");
+              .Append("VALUES (DEFAULT, @cpf, @nomeusu, @niver, @email, @senha, @numero,@datacriado,@excluido); SELECT currval('usuarioslinebreak_idusuario_seq')");
             try
             {
                 using (NpgsqlConnection conn = new NpgsqlConnection(Funcoes.ConexaoBD.RetornaConexaoBD()))
@@ -31,8 +31,12 @@ namespace DAL
                     cmd.Parameters.AddWithValue("@datacriado", thisDay);
                     cmd.Parameters.AddWithValue("@excluido", "n");
                     conn.Open();
-
-                    return Convert.ToInt32(cmd.ExecuteScalar());
+                    NpgsqlDataReader dr;
+                    dr = cmd.ExecuteReader();
+                    dr.Read();
+                    string idUser = dr[0].ToString();
+                    conn.Close();
+                    return idUser;
                 }
             }
             catch (NpgsqlException)

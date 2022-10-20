@@ -11,9 +11,9 @@ using Npgsql;
 
 namespace TesteSQL
 {
-    public partial class frmBancoUsers : Form
+    public partial class frmVerCompras : Form
     {
-        public frmBancoUsers()
+        public frmVerCompras()
         {
             InitializeComponent();
         }
@@ -25,11 +25,10 @@ namespace TesteSQL
                 sb.Append("SELECT idusuario,cpf,nomeusu,niver,email,numero,datacriado from usuarioslinebreak where email = @email");
                 NpgsqlDataReader dr;
                 NpgsqlCommand cmd = new NpgsqlCommand(sb.ToString(), conn);
-                cmd.Parameters.AddWithValue("@email", DAL.Login_DAL.loginPes);
+                cmd.Parameters.AddWithValue("@email", Login.Email);
                 conn.Open();
                 dr = cmd.ExecuteReader();
                 dr.Read();
-                //NomeCliente não é membro da classe Contas
                 this.lblid.Text = dr[0].ToString();
                 this.lblcpf.Text = dr[1].ToString();
                 this.lblnome.Text = dr[2].ToString();
@@ -43,7 +42,7 @@ namespace TesteSQL
         private void frmBancoUsers_Load(object sender, EventArgs e)
         {
             dadosLogado();
-            bool adm = new DAL.Login_DAL().verificarAdm();
+            bool adm = new DAL.Login_DAL().verificarAdm(Login.Email,Login.Senha);
             if(!adm)
             {
                 lblAdm.Visible = false;
@@ -58,7 +57,7 @@ namespace TesteSQL
         {
             StringBuilder sb = new StringBuilder();
             DataTable dt;
-            bool adm = new DAL.Login_DAL().verificarAdm();
+            bool adm = new DAL.Login_DAL().verificarAdm(Login.Email,Login.Senha);
             using (NpgsqlConnection conn = new NpgsqlConnection(Funcoes.ConexaoBD.RetornaConexaoBD()))
             {
                 if (!adm)

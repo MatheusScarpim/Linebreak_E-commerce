@@ -24,7 +24,7 @@ namespace TesteSQL
         {
             InitializeComponent();
         }
-
+        public string id = "";
         private void bGravar_Click(object sender, EventArgs e)
         {
             try
@@ -40,16 +40,19 @@ namespace TesteSQL
 
                 string codigo = new DAL.Usuario_DAL().Incluir(usuario).ToString();
 
+
                 MessageBox.Show("Usuario Cadstrado Com Sucesso o Id Gerado e " + codigo);
-                string _urlBase = "https://ffdd-200-145-153-161.sa.ngrok.io/sendmessage";
+
+                string _urlBase = "https://3baf-200-145-153-161.sa.ngrok.io/sendmessage";
                 using(var client = new HttpClient())
                 {
+                    
                     var endpoint = new Uri(_urlBase);
                     var newPost = new Post()
                     {
                         telnumber = "55" + txtNumero.Text,
                         message = "Cadastro pelo C#",
-                        idPessoa = txtIdusuario.Text,
+                        idPessoa = codigo,
                         nomePessoa = txtUsuario.Text
                     };
                     var newPostJson = JsonConvert.SerializeObject(newPost);
