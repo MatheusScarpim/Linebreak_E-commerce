@@ -131,10 +131,6 @@ namespace TesteSQL
             }
         }
 
-        private void btnExcluir_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnExcluidos_Click(object sender, EventArgs e)
         {
@@ -143,11 +139,34 @@ namespace TesteSQL
 
         private void btnRecuperar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                int idperfume = Convert.ToInt32(txtIdusuario.Text);
+                Modelo.Modelo_User usuario = new Modelo.Modelo_User();
+                usuario.idusuario = (idperfume);
+                string codigo = new DAL.Usuario_DAL().Recuperar(usuario).ToString();
+                MessageBox.Show("Usuario Recuperar Com Sucesso o Id Gerado e " + codigo);
+            }
+            catch (Exception)
+            {
 
+            }
         }
-        private string concateData(string data)
+
+        private void btnExcluir_Click(object sender, EventArgs e)
         {
-            return data;
+            try
+            {
+                int idperfume = Convert.ToInt32(txtIdusuario.Text);
+                Modelo.Modelo_User usuario = new Modelo.Modelo_User();
+                usuario.idusuario = (idperfume);
+                string codigo = new DAL.Usuario_DAL().Excluir(usuario).ToString();
+                MessageBox.Show("Usuario Excluir Com Sucesso o Id Gerado e " + codigo);
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         private void btnAttdados_Click(object sender, EventArgs e)

@@ -260,7 +260,7 @@
             this.Controls.Add(this.txtCpf);
             this.Controls.Add(this.t);
             this.Name = "frmCadUser";
-            this.Text = "frmCadUser";
+            this.Text = "Cadastro de Usuarios";
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataSouce)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

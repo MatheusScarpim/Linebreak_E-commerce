@@ -24,10 +24,10 @@ namespace TesteSQL
 
         private void bGravar_Click(object sender, EventArgs e)
         {
-            int quantidade = Convert.ToInt32(txtQtd.Text);
-            double valor = Convert.ToDouble(txtValor.Text);
             try
             {
+                int quantidade = Convert.ToInt32(txtQtd.Text);
+                double valor = Convert.ToDouble(txtValor.Text);
                 Modelo.Modelo_Produto usuario = new Modelo.Modelo_Produto();
                 MemoryStream m = new MemoryStream();
                 Image image = pcImagem.Image;
@@ -125,9 +125,9 @@ namespace TesteSQL
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            int idperfume = Convert.ToInt32(txtIdPerfume.Text);
             try
             {
+                int idperfume = Convert.ToInt32(txtIdPerfume.Text);
                 Modelo.Modelo_Produto usuario = new Modelo.Modelo_Produto();
                 usuario.idPerfume = (idperfume);
                 usuario.Data_Excluido = thisDay;
@@ -150,9 +150,9 @@ namespace TesteSQL
 
         private void btnRecuperar_Click(object sender, EventArgs e)
         {
-            int idperfume = Convert.ToInt32(txtIdPerfume.Text);
             try
             {
+                int idperfume = Convert.ToInt32(txtIdPerfume.Text);
                 Modelo.Modelo_Produto usuario = new Modelo.Modelo_Produto();
                 usuario.idPerfume = (idperfume);
 
@@ -169,11 +169,12 @@ namespace TesteSQL
 
         private void btnAttdados_Click(object sender, EventArgs e)
         {
-            int quantidade = Convert.ToInt32(txtValor.Text);
-            double valor = Convert.ToDouble(txtQtd.Text);
-            int idperfume = Convert.ToInt32(txtIdPerfume.Text);
+            
             try
             {
+                int quantidade = Convert.ToInt32(txtValor.Text);
+                double valor = Convert.ToDouble(txtQtd.Text);
+                int idperfume = Convert.ToInt32(txtIdPerfume.Text);
                 MemoryStream m = new MemoryStream();
                 Image image = pcImagem.Image;
                 string base64String = null;
@@ -226,12 +227,19 @@ namespace TesteSQL
 
         private void abrirImagem_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.ShowDialog();
-            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            try
             {
-                MessageBox.Show("Imagem " + openFileDialog1.FileName + " foi importada");
-                pcImagem.ImageLocation = openFileDialog1.FileName;
+                OpenFileDialog openFileDialog1 = new OpenFileDialog();
+                openFileDialog1.ShowDialog();
+                if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    MessageBox.Show("Imagem " + openFileDialog1.FileName + " foi importada");
+                    pcImagem.ImageLocation = openFileDialog1.FileName;
+                }
+            }
+            catch (Exception)
+            {
+
             }
         }
     }

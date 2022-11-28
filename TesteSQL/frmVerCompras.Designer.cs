@@ -204,7 +204,7 @@
             this.lblAdm.Text = "Modo Administrador";
             this.lblAdm.Visible = false;
             // 
-            // frmBancoUsers
+            // frmVerCompras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -226,8 +226,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvDataSouce);
-            this.Name = "frmBancoUsers";
-            this.Text = "frmBancoUsers";
+            this.Name = "frmVerCompras";
+            this.Text = "Ver Compras";
             this.Load += new System.EventHandler(this.frmBancoUsers_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataSouce)).EndInit();
             this.ResumeLayout(false);

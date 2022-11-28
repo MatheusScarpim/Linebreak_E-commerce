@@ -62,7 +62,7 @@ namespace TesteSQL
             {
                 if (!adm)
                 {
-                    sb.Append("select * from compralinebreak where idusuario = @idusuario");
+                    sb.Append("select * from vendalinebreak where idusuario = @idusuario");
                     try
                     {
                         NpgsqlCommand cmd = new NpgsqlCommand(sb.ToString(), conn);
@@ -82,7 +82,7 @@ namespace TesteSQL
                 }
                 else
                 {
-                    sb.Append("select * from compralinebreak");
+                    sb.Append("select * from vendalinebreak");
                     try
                     {
                         NpgsqlCommand cmd = new NpgsqlCommand(sb.ToString(), conn);

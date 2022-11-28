@@ -25,12 +25,20 @@ namespace TesteSQL
 
         private void btnAddplanilha_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.ShowDialog();
-            if(openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            try
             {
-                MessageBox.Show("Planilha " + openFileDialog1.FileName + " foi importada");
-                lblNomePlanilha.Text = openFileDialog1.FileName;
+                OpenFileDialog openFileDialog1 = new OpenFileDialog();
+                openFileDialog1.ShowDialog();
+                if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    MessageBox.Show("Planilha " + openFileDialog1.FileName + " foi importada");
+                    lblNomePlanilha.Text = openFileDialog1.FileName;
+                }
+            }
+            catch (Exception err)
+            {
+
+                MessageBox.Show("Erro:" + err);
             }
         }
         private void MostrarTodos()
@@ -89,15 +97,15 @@ namespace TesteSQL
         }
         private void ImportarPlanilha()
         {
-            Modelo.Modelo_Produto usuario = new Modelo.Modelo_Produto();
-            pasta = app.Workbooks.Open(lblNomePlanilha.Text);
-            plan = pasta.Worksheets["Cadastrar"];
             bool valor = true;
             int i = 2;
             while (valor == true)
             {
                 try
                 {
+                    Modelo.Modelo_Produto usuario = new Modelo.Modelo_Produto();
+                    pasta = app.Workbooks.Open(lblNomePlanilha.Text);
+                    plan = pasta.Worksheets["Cadastrar"];
                     usuario.Nomeper = (plan.Cells[i, 2].Value.ToString());
                     int Quantidade = Convert.ToInt32(plan.Cells[i, 3].Value.ToString());
                     double Valor = Convert.ToDouble(plan.Cells[i, 4].Value.ToString());
@@ -110,7 +118,6 @@ namespace TesteSQL
                 catch
                 {
                     valor = false;
-                    pasta.Close();
                 }
             }
         }

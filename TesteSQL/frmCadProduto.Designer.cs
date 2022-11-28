@@ -246,7 +246,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(103, 23);
             this.button1.TabIndex = 26;
-            this.button1.Text = "button1";
+            this.button1.Text = "Foto";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.abrirImagem_Click);
             // 
@@ -282,7 +282,7 @@
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.label1);
             this.Name = "frmCadProduto";
-            this.Text = "frmCadUsuario";
+            this.Text = "Cadastro Produtos";
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataSouce)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcImagem)).EndInit();
             this.ResumeLayout(false);

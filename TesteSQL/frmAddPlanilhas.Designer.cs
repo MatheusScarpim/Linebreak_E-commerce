@@ -111,7 +111,7 @@
             this.Controls.Add(this.lblNomePlanilha);
             this.Controls.Add(this.btnAddplanilha);
             this.Name = "frmAddPlanilhas";
-            this.Text = "frmAddPlanilhas";
+            this.Text = "Adiciona Planilhas";
             this.Load += new System.EventHandler(this.frmAddPlanilhas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataSouce)).EndInit();
             this.ResumeLayout(false);

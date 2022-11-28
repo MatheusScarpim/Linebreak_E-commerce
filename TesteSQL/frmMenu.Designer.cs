@@ -99,7 +99,7 @@
             this.Controls.Add(this.btnCadUser);
             this.Controls.Add(this.btnCadProduto);
             this.Name = "frmMenu";
-            this.Text = "frmMenu";
+            this.Text = "Menu";
             this.Load += new System.EventHandler(this.frmMenu_Load);
             this.ResumeLayout(false);
 
